@@ -39,11 +39,15 @@ public class TicketMachine {
     public Iterator<Integer> getTroco() {
         return null;
     }
-
-    public String imprimir() throws SaldoInsuficienteException {
+    
+    public boolean verificaSaldo() throws SaldoInsuficienteException{
         if (saldo < valor) {
             throw new SaldoInsuficienteException();
+        }else{
+        return true;
         }
+    }
+    public String imprimir(){
         String result = "*****************\n";
         result += "*** R$ " + saldo + ",00 ****\n";
         result += "*****************\n";
