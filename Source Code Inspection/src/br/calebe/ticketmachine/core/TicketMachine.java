@@ -3,6 +3,8 @@ package br.calebe.ticketmachine.core;
 import br.calebe.ticketmachine.exception.PapelMoedaInvalidaException;
 import br.calebe.ticketmachine.exception.SaldoInsuficienteException;
 import java.util.Iterator;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 
 /**
  *
@@ -40,14 +42,13 @@ public class TicketMachine {
         return null;
     }
     
-    public boolean verificaSaldo() throws SaldoInsuficienteException{
+    public void verificaSaldo() throws SaldoInsuficienteException{
         if (saldo < valor) {
-            throw new SaldoInsuficienteException();
-        }else{
-        return true;
+            throw new SaldoInsuficienteException();//saldo não ok
         }
     }
-    public String imprimir(){
+    public String imprimir() throws SaldoInsuficienteException{
+        this.verificaSaldo();//caso o saldo seja menor que o valor ele lança a exception
         String result = "*****************\n";
         result += "*** R$ " + saldo + ",00 ****\n";
         result += "*****************\n";
