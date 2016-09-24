@@ -38,8 +38,8 @@ public class TicketMachine {
         return saldo;
     }
 
-    public Iterator<Integer> getTroco() {
-        return null;
+    public Integer getTroco() {
+       return this.saldo-this.valor;
     }
     
     public void verificaSaldo() throws SaldoInsuficienteException{
