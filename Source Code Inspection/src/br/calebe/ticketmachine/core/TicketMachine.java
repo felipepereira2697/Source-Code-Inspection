@@ -15,7 +15,10 @@ public class TicketMachine {
     protected int valor;
     protected int saldo;
     protected int[] papelMoeda = {2, 5, 10, 20, 50, 100};
-
+//    refatorei aqui
+    public TicketMachine(){
+    
+    }
     public TicketMachine(int valor) {
         this.valor = valor;
         this.saldo = 0;
@@ -42,10 +45,19 @@ public class TicketMachine {
        return this.saldo-this.valor;
     }
     
-    public void verificaSaldo() throws SaldoInsuficienteException{
-        if (saldo < valor) {
-            throw new SaldoInsuficienteException();//saldo não ok
+    //refatorei aqui
+//    public boolean verificaSaldo() throws SaldoInsuficienteException{
+//        //retorna true se o saldo disponivel for maior ou igual ao valor
+//       if(saldo<valor){
+//           throw new SaldoInsuficienteException();
+//       }
+//       return true;
+//    }
+    public boolean verificaSaldo() throws SaldoInsuficienteException{
+        if(saldo<valor){
+            throw new SaldoInsuficienteException();
         }
+        return true;
     }
     public String imprimir() throws SaldoInsuficienteException{
         this.verificaSaldo();//caso o saldo seja menor que o valor ele lança a exception
@@ -54,4 +66,10 @@ public class TicketMachine {
         result += "*****************\n";
         return result;
     }
+    
+    //refatorei aqui
+    //public void setSaldo(int saldo) {
+        //this.saldo = saldo;
+    //}
+    
 }
